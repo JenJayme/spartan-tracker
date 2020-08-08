@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3000;
 
-const User = require("./exercise.js");
+const Workout = require("./workoutModel.js");
+const Exercise = require("./exerciseModel.js")
 const app = express();
 
 app.use(logger("dev"));
@@ -18,8 +19,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/userdb", { useN
 
 app.post("/submit", ({ body }, res) => {
   User.create(body)
-    .then(dbUser => {
-      res.json(dbUser);
+    .then(dbWorkout => {
+      res.json(dbWorkout);
     })
     .catch(err => {
       res.json(err);
