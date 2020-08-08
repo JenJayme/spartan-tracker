@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3000;
 
-const Workout = require("./workoutModel.js");
-const Exercise = require("./exerciseModel.js")
+const Workout = require("./models/WorkoutModel");
+const Exercise = require("./models/ExerciseModel")
 const app = express();
 
 app.use(logger("dev"));
@@ -18,9 +18,9 @@ app.use(express.static("public"));
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/userdb", { useNewUrlParser: true });
 
 app.post("/submit", ({ body }, res) => {
-  User.create(body)
-    .then(dbWorkout => {
-      res.json(dbWorkout);
+  Workout.create(body)
+    .then(SpartanDB => {
+      res.json(SpartanDB);
     })
     .catch(err => {
       res.json(err);
