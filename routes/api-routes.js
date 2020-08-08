@@ -1,5 +1,5 @@
-const Workout = require("./Workout.js")
-const Mongoose  = require("mongoose")
+const Workout = require("../models/WorkoutModel");
+const Mongoose  = require("mongoose");
 
 
 module.exports = function (app) {
