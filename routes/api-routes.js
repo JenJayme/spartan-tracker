@@ -44,7 +44,7 @@ module.exports = function (app) {
             totalDuration: 0
         }
         var dayOfWeek = new Date(Date.now()).getDay()
-        console.log
+        
         for (i=0; i<= dayOfWeek; i++) {
             if (workouts[i]) {
                 workoutRange.unshift(workouts[i])
@@ -53,7 +53,7 @@ module.exports = function (app) {
                 workoutRange.unshift(emptyWorkout)
             }
         }
-        console.log(workoutRange)
+    
         return workoutRange
     }
 }

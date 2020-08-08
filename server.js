@@ -16,19 +16,9 @@ app.use(express.json());
 app.use(express.static("public"));
 
 require("./routes/api-routes")(app)
-require(".routes/html-routes")(app)
+require("./routes/html-routes")(app)
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/userdb", { useNewUrlParser: true });
-
-// app.post("/submit", ({ body }, res) => {
-//   Workout.create(body)
-//     .then(SpartanDB => {
-//       res.json(SpartanDB);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/spartan-tracker", { useNewUrlParser: true });
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
