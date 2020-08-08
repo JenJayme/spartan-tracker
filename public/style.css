@@ -175,14 +175,14 @@ button {
   background: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
 }
 
-#continue-btn {
+/* #continue-btn {
   padding-top: 1.3em;
 }
 
 #exercise-btn {
   padding-top: 1.3em;
   background-color: black;
-} 
+}  */
 
 #toast {
   border-radius: 4px;
