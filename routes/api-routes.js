@@ -11,13 +11,13 @@ module.exports = function (app) {
         }
         res.json(workouts)
 
-    })
+    });
 
     app.post("/api/workouts", (req, res) => {
         Workout.create(req.body).then(data => {
             res.json(data)
         })
-    })
+    });
 
     app.put("/api/workouts/:id", async (req, res) => {
         var workoutId = req.params.id
@@ -29,13 +29,13 @@ module.exports = function (app) {
             res.json(data)
         })
         
-    })
+    });
 
     app.get("/api/workouts/range", (req, res) => {
         Workout.find().then(data => {
             res.json(data)
         })        
-    })
+    });
 
     function findRange(workouts) {
         workoutRange = []
