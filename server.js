@@ -20,6 +20,8 @@ require("./routes/html-routes")(app)
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/spartan-tracker", { useNewUrlParser: true });
 
+const seeds = require("./seed")
+
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
 });

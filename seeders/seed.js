@@ -6,21 +6,21 @@ mongoose.connect("mongodb://localhost/workout", {
   useFindAndModify: false
 });
 
-seeder.connect(db, function () {
-  seeder.loadModels ( modelPaths: [
-    "../models"
-  ]);
-  seeder.clearModels( models: ['Workout']);
-  seeder.populateModels(workoutSeed, cb: function (err, done) {
-    if (err) {
-      return console.log("seed err", err)
-    }
-    if (done) {
-      return console.log("seed done", done);
-    }
-    seeder.disconnect()
-  })
-})
+// seeder.connect(db, function () {
+//   seeder.loadModels ( modelPaths: [
+//     "../models"
+//   ]);
+//   seeder.clearModels( models: ['Workout']);
+//   seeder.populateModels(workoutSeed, cb: function (err, done) {
+//     if (err) {
+//       return console.log("seed err", err)
+//     }
+//     if (done) {
+//       return console.log("seed done", done);
+//     }
+//     seeder.disconnect()
+//   })
+// })
 
 let workoutSeed = [
   {
