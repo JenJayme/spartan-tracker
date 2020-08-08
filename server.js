@@ -15,17 +15,20 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+require("./routes/api-routes")(app)
+require(".routes/html-routes")(app)
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/userdb", { useNewUrlParser: true });
 
-app.post("/submit", ({ body }, res) => {
-  Workout.create(body)
-    .then(SpartanDB => {
-      res.json(SpartanDB);
-    })
-    .catch(err => {
-      res.json(err);
-    });
-});
+// app.post("/submit", ({ body }, res) => {
+//   Workout.create(body)
+//     .then(SpartanDB => {
+//       res.json(SpartanDB);
+//     })
+//     .catch(err => {
+//       res.json(err);
+//     });
+// });
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
