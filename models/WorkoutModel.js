@@ -12,41 +12,45 @@ const ExerciseSchema = new Schema({
     name: {
       type: String,
     },
-  
+  //EXERCISE DURATION
     duration: {
       type: Number,
     },
-  
+  //EXERCISE WEIGHT  
     weight: {
       type: Number,
     },
-  
+  //EXERCISE REPS
     reps: {
       type: Number,
     },
-  
+  //EXERCISE SETS  
     sets: {
       type: Number,
     },
-  
   });
 
 const WorkoutSchema = new Schema({
 
-  //WORKOUT DATE
+//WORKOUT DATE
   day: {
-    type: Date,
+    type: Number,
+    default: Date.now
   },
-//EXERCISE NAME
+//TOTAL DURATION FOR DAY-WORKOUT
   total_duration: {
     type: Number,
   },
-
+//TOTAL DURATION FOR DAY-WORKOUT
   total_weight: {
     type: Number,
+    default: 0
   },
-
-  exercises: [ExerciseSchema]
+//SPECIFIC EXERCISES DONE IN DAY-WORKOUT
+  exercises: {
+    type: Array,
+    default: []
+  }
 });
 
 WorkoutSchema.methods.setTotalDuration = function(){
@@ -54,10 +58,10 @@ WorkoutSchema.methods.setTotalDuration = function(){
   console.log("Running setTotalDuration function")
   for (const exercise of this.exercises) {
       console.log(exercise)
-      this.totalDuration += exercise.duration
+      this.total_duration += exercise.duration
   }
-  console.log(this.totalDuration)
-  return this.totalDuration
+  console.log(this.total_duration)
+  return this.total_duration
 
 }
 
