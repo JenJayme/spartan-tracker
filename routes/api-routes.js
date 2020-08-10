@@ -10,8 +10,7 @@ module.exports = function (app) {
         for (const workout of workouts) {
             await workout.setTotalDuration()
         }
-        res.json(workouts)
-
+        res.json(workouts);
     });
 
     app.post("/api/workouts", (req, res) => {
