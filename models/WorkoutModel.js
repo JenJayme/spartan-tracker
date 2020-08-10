@@ -94,6 +94,27 @@ WorkoutSchema.methods.setTotalDuration = function(){
   return this.totalDuration
 }
 
+WorkoutSchema.methods.findRange = function(workouts){
+  workoutRange = []
+  const emptyWorkout = {
+      exercises : [],
+      totalDuration: 0
+  }
+  var dayOfWeek = new Date(Date.now()).getDay()
+  
+  for (i=0; i<= dayOfWeek; i++) {
+      if (workouts[i]) {
+          workoutRange.unshift(workouts[i])
+      }
+      else {
+          workoutRange.unshift(emptyWorkout)
+      }
+  }
+
+  return workoutRange
+}
+
+
 const Workout = mongoose.model("Workout", WorkoutSchema);
 
 // Workout.createCollection().then(function (collection) {

@@ -1,12 +1,30 @@
 const Workout = require("../models/WorkoutModel");
 const Mongoose  = require("mongoose");
+const Range = function findRange(workouts) {
+    workoutRange = []
+    const emptyWorkout = {
+        exercises : [],
+        totalDuration: 0
+    }
+    var dayOfWeek = new Date(Date.now()).getDay()
+    
+    for (i=0; i<= dayOfWeek; i++) {
+        if (workouts[i]) {
+            workoutRange.unshift(workouts[i])
+        }
+        else {
+            workoutRange.unshift(emptyWorkout)
+        }
+    }
 
+    return workoutRange
+}
 
 module.exports = function (app) {
     console.log('Engaging api-routes.js');
 
     app.get("/api/workouts", async (req, res) => {
-        var workouts = await Workout.find()
+        var workouts = await Workout.find();
         for (const workout of workouts) {
             await workout.setTotalDuration()
         }
@@ -31,29 +49,11 @@ module.exports = function (app) {
         
     });
 
-    app.get("/api/workouts/range", (req, res) => {
+    app.get("/api/workouts/range", async (req, res) => {
+        console.log('Engaging workouts/range api route.');
         Workout.find().then(data => {
-            res.json(data)
-        })        
+            res.json(data);
+        }).catch(err => alert(err))
     });
-
-    function findRange(workouts) {
-        workoutRange = []
-        const emptyWorkout = {
-            exercises : [],
-            totalDuration: 0
-        }
-        var dayOfWeek = new Date(Date.now()).getDay()
-        
-        for (i=0; i<= dayOfWeek; i++) {
-            if (workouts[i]) {
-                workoutRange.unshift(workouts[i])
-            }
-            else {
-                workoutRange.unshift(emptyWorkout)
-            }
-        }
-    
-        return workoutRange
-    }
 }
+
