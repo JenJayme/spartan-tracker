@@ -38,11 +38,12 @@ const WorkoutSchema = new Schema({
     default: Date.now
   },
   //TOTAL DURATION FOR DAY-WORKOUT
-  // total_duration: {
-  //   type: Number,
-  // },
+  totalDuration: {
+    type: Number,
+    default: 0
+  },
   //TOTAL DURATION FOR DAY-WORKOUT
-  total_weight: {
+  totalWeight: {
     type: Number,
     default: 0
   },
@@ -65,20 +66,32 @@ const WorkoutSchema = new Schema({
 //   return this.total_duration
 // }
 
-WorkoutSchema.methods.setTotalDuration = function(exercises){
-  console.log("Running setTotalDuration function");
+// WorkoutSchema.methods.setTotalDuration = function(){
+//   console.log("Running setTotalDuration function");
 
   // for (var i = 0; i < Workout.exercises.length; i++) {
   //   this.total_duration += Workout.exercises[i].duration;
   //   console.log(total_duration);
-  var total_duration;
+//   var totalDuration;
+//   for (var exercise of this.exercises) {
+//       console.log(exercise);
+//       totalDuration += exercise.duration;
+//       console.log('total duration', totalDuration);
+//       return this.totalDuration
+//   }
+// }
+
+
+WorkoutSchema.methods.setTotalDuration = function(){
+
+  console.log("Engaging set duration function")
   for (const exercise of this.exercises) {
       console.log(exercise)
-      total_duration += exercise.duration
+      this.totalDuration += exercise.duration
   }
-  // console.log('exercise duration', exercise.duration);
-  console.log('total duration', total_duration);
-  return this.total_duration
+  console.log("Come on little engine.")
+  console.log(this.totalDuration)
+  return this.totalDuration
 }
 
 const Workout = mongoose.model("Workout", WorkoutSchema);

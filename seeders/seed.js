@@ -147,7 +147,9 @@ let workoutSeed = [
         type: "resistance",
         name: "Bench",
         duration: 30,
-        distance: 2
+        weight: 300,
+        reps: 10,
+        sets: 4
       }
     ]
   }
@@ -156,7 +158,7 @@ let workoutSeed = [
 Workouts.deleteMany({})
   .then(() => Workouts.insertMany(workoutSeed))
   .then(data => {
-    console.log("Seeds run. Records inserted!", data.result);
+    console.log("Seeds run. Records inserted!", data);
     process.exit(0);
   })
   .catch(err => {
