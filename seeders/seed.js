@@ -1,26 +1,28 @@
 let mongoose = require("mongoose");
-let db = require("../models");
+// const Workout = require("../models/WorkoutModel");
+let Workouts = require("../models/WorkoutModel");
 
-mongoose.connect("mongodb://localhost/workout", {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
+let Exercises = require("../models/ExerciseModel");
+// let db = require("../models");
+const db = function (client) {
+  db = client.db('spartan-tracker');
+  db.createCollection().then(function(collection) {
+    console.log('Collection is created!');
+  });
+  return Workouts;
+};
 
-// seeder.connect(db, function () {
-//   seeder.loadModels ( modelPaths: [
-//     "../models"
-//   ]);
-//   seeder.clearModels( models: ['Workout']);
-//   seeder.populateModels(workoutSeed, cb: function (err, done) {
-//     if (err) {
-//       return console.log("seed err", err)
-//     }
-//     if (done) {
-//       return console.log("seed done", done);
-//     }
-//     seeder.disconnect()
-//   })
+// mongoose.connect("mongodb://localhost/spartan-tracker", {
+//   useNewUrlParser: true,
+//   useFindAndModify: false
 // })
+// .then (function (client) {
+//   db = client.db('spartan-tracker');
+//   db.createCollection().then(function(collection) {
+//     const Workout = mongoose.model("Workout", WorkoutSchema);
+//     console.log('Collection is created!');
+//   });
+// });
 
 let workoutSeed = [
   {
@@ -151,10 +153,10 @@ let workoutSeed = [
   }
 ];
 
-db.Workout.deleteMany({})
-  .then(() => db.Workout.collection.insertMany(workoutSeed))
+Workouts.deleteMany({})
+  .then(() => Workouts.insertMany(workoutSeed))
   .then(data => {
-    console.log(data.result.n + " records inserted!");
+    console.log("Seeds run. Records inserted!", data.result);
     process.exit(0);
   })
   .catch(err => {

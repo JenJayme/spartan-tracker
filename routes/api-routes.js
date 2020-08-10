@@ -3,6 +3,7 @@ const Mongoose  = require("mongoose");
 
 
 module.exports = function (app) {
+    console.log('Engaging api-routes.js');
 
     app.get("/api/workouts", async (req, res) => {
         var workouts = await Workout.find()

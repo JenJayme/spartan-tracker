@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3000;
 
 const Workout = require("./models/WorkoutModel");
-const Exercise = require("./models/ExerciseModel")
 const app = express();
 
 app.use(logger("dev"));
@@ -15,12 +14,11 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-require("./routes/api-routes")(app)
-require("./routes/html-routes")(app)
+require("./routes/api-routes")(app);
+require("./routes/html-routes")(app);
+// const seeds = require("./seeders/seed");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/spartan-tracker", { useNewUrlParser: true });
-
-const seeds = require("./seed")
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/spartan-tracker", { useNewUrlParser: true, useFindAndModify: false });
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
