@@ -89,7 +89,7 @@ let workoutSeed = [
     ]
   },
   {
-    day: new Date().setDate(new Date().getDate()-5),
+    day: new Date().setDate(new Date().getDate()-6),
     exercises: [
       {
         type: "resistance",
@@ -102,7 +102,7 @@ let workoutSeed = [
     ]
   },
   {
-    day: new Date().setDate(new Date().getDate()-4),
+    day: new Date().setDate(new Date().getDate()-5),
     exercises: [
       {
         type: "resistance",
@@ -115,7 +115,7 @@ let workoutSeed = [
     ]
   },
   {
-    day: new Date().setDate(new Date().getDate()-3),
+    day: new Date().setDate(new Date().getDate()-4),
     exercises: [
       {
         type: "resistance",
@@ -128,7 +128,7 @@ let workoutSeed = [
     ]
   },
   {
-    day: new Date().setDate(new Date().getDate()-2),
+    day: new Date().setDate(new Date().getDate()-3),
     exercises: [
       {
         type: "resistance",
@@ -141,7 +141,7 @@ let workoutSeed = [
     ]
   },
   {
-    day: new Date().setDate(new Date().getDate()-1),
+    day: new Date().setDate(new Date().getDate()-2),
     exercises: [
       {
         type: "resistance",
@@ -150,6 +150,30 @@ let workoutSeed = [
         weight: 300,
         reps: 10,
         sets: 4
+      }
+    ]
+  },
+  {
+    day: new Date().setDate(new Date().getDate()-1),
+    exercises: [
+      {
+        type: "cardio",
+        name: "Burpees",
+        duration: 25,
+        distance: 4
+      }
+    ]
+  },
+  {
+    day: new Date().setDate(new Date().getDate()-1),
+    exercises: [
+      {
+        type: "resistance",
+        name: "Push Ups",
+        duration: 10,
+        weight: 180,
+        reps: 10,
+        sets: 3
       }
     ]
   }
